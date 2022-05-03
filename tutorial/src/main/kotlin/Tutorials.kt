@@ -3,27 +3,59 @@
 fun main(){
     val list = mutableListOf<Int>()
 
-    for(i in 1..10){
-        val x = readLine()?.toInt()
-        if(x!=null) {
-            list.add(x)
+    list.add(10)
+    list.add(5)
+/*
+    val input = try {
+        readLine()?.toInt()
+    }catch (e: NumberFormatException){
+        0
+    }
+
+    for(x in list){
+        when(x.isPrime()) {
+            false -> {
+                println("$x nije prim broj")
+            }
+            else -> {
+                println("$x je prim broj")
+            }
         }
     }
 
+    var list = (1..20).toList()
+    list = list.filter{i%2==0}
+*/
+
+    val myC = Rectangle(2.5, 2.5)
+
+    print(myC.area())
 
 
 }
 
-fun ageI(){
-    val age = readLine()?.toInt()
-    val x = 5
-
-    when(age){
-        in 1..5 -> println("Izmedju 1 i 5")
-        10 -> println("Tocno 10")
-        3 -> if(x!=6){
-            print("Unos je $age a x razlicit od 6")
+fun Int.isPrime(): Boolean{
+    for(i in 2..this-1){
+        if(this%i == 0){
+            return false
         }
-        else -> print("Ostalo")
     }
+    return true
+}
+
+class Rectangle(val a: Double,val b: Double): Shape("Rectangle"){
+
+    init{
+        print("$name created, a= $a, b= $b")
+    }
+
+    override fun area(): Double = a*b
+}
+
+abstract class Shape(var name: String){
+    init{
+        println("Ja sam superklasa!! Oblik: $name")
+    }
+
+    abstract fun area(): Double
 }
