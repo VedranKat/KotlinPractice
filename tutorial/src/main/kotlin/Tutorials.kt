@@ -31,6 +31,8 @@ fun main(){
 
     print(myC.area())
 
+    var integers = (1..10).toList().customFilter{it  > 5}
+
 
 }
 
@@ -58,4 +60,24 @@ abstract class Shape(var name: String){
     }
 
     abstract fun area(): Double
+}
+
+fun <T> List<T>.customFilter(filterFunction: (T) -> (Boolean)): List<T>{
+    val resultList = mutableListOf<T>()
+
+    for (item in this){
+        if(filterFunction(item)){
+            resultList.add(item)
+        }
+    }
+
+    return resultList
+}
+
+class CustomTriple<A : Any,B,C>(var first:A , var second:B, var third:C){
+
+    init {
+        println("Prvi: $first, drugi: $second, treci: $third")
+        println("The type of first is ${first::class}")
+    }
 }
